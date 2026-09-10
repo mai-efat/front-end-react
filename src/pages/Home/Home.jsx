@@ -1,4 +1,10 @@
+import Questions from '../../components/questionsComponent/Questions';
 function Home() {
-  return <h1>welcome to home</h1>;
+  return (
+    <div>
+      <h1>welcome to home</h1>;
+      <Questions />
+    </div>
+  );
 }
 export default Home;
