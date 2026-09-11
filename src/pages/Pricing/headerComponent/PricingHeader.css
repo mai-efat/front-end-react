@@ -6,6 +6,7 @@ header {
     width: 50%;
     line-height: 1.1;
     margin-bottom: 70px;
+    width: 100%;
 }
 
 .header-span {
@@ -24,4 +25,10 @@ header p span {
     font-style: italic;
     color: #514F4A;
     font-weight: 900;
+}
+
+@media(max-width:769px) {
+    header {
+        text-align: left;
+    }
 }

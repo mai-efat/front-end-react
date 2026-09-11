@@ -14,5 +14,14 @@
 .pricing-page {
 
     background-color: var(--backgroundColor-light);
+    padding: 0 100px;
 
+}
+
+@media(max-width:1024px) {
+    .pricing-page {
+
+        padding: 0 100px;
+
+    }
 }

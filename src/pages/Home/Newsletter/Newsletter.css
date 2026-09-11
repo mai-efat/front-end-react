@@ -1,0 +1,115 @@
+.newsletter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, #0E0F11, #23252A);
+    margin: 0 150px;
+    padding: 100px 100px;
+    position: relative;
+    border-radius: 30px;
+}
+
+.newsletter::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 50px 50px, #0D9488 0%, transparent 25%),
+        radial-gradient(circle at 50% 100%, #f49f16c7 0%, transparent 25%);
+    filter: blur(120px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.newsletter .circle-1,
+.circle-2,
+.circle-3,
+.circle-4 {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    transform: rotate(-50deg);
+    position: absolute;
+}
+
+.newsletter .circle-1 {
+    width: 150px;
+    height: 200px;
+    top: 15px;
+    right: 30px;
+
+}
+
+.newsletter .circle-2 {
+    width: 200px;
+    height: 300px;
+    top: -30px;
+    right: 20px;
+
+}
+
+.newsletter .circle-3 {
+    width: 150px;
+    height: 200px;
+    bottom: 15px;
+    left: 30px;
+
+}
+
+.newsletter .circle-4 {
+    width: 200px;
+    height: 300px;
+    bottom: -30px;
+    left: 20px;
+
+}
+
+
+.newsletter .newsletter-tag {
+    text-transform: uppercase;
+    color: #FCFCFD;
+    font-size: 12px;
+    font-weight: 100;
+    margin: 10px 0;
+}
+
+.newsletter h3 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #FCFCFD;
+    margin: 10px 0;
+}
+
+.newsletter-description {
+    color: #FCFCFD;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.newsletter-input {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.newsletter input {
+    margin: 10px 10px;
+    padding: 20px;
+    width: 40%;
+    border-radius: 15px;
+    font-size: 14px;
+}
+
+.newsletter button {
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px white solid;
+    color: #FCFCFD;
+    padding: 20px 50px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 15px;
+    cursor: pointer;
+}
