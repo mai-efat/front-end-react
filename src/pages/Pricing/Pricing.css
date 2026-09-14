@@ -1,10 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* Global Variables */
-:root {
-    --backgroundColor-light: white;
-    --backgroundColor-dark: #131313;
-}
+
 
 * {
     margin: 0;
@@ -13,6 +10,6 @@
 
 .pricing-page {
 
-    background-color: var(--backgroundColor-light);
+    background-color: var(--color-bg);
 
 }
