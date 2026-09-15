@@ -5,38 +5,26 @@ import ArticleSidebar from './Components/articleSidebar/ArticleSidebar';
 import CtaCard from './Components/ctaCard/CtaCard';
 import MoreArticles from './Components/moreArticles/MoreArticles';
 
-
-
-
-
-
-
-
 function BlogDetails() {
-         
   return (
-             <>
-      
-    <main className={styles.blogContent}>
-      <section className= {styles.articleLayout}>
-         <article className= {styles.articleContent}>
-            <ArticleHeader/>
-           <ArticleContent/>
-           <CtaCard/>
-         </article>
-         <aside >
-        <ArticleSidebar/>
-        </aside>
+    <>
+      <main className={styles.blogContent}>
+        <section className={styles.articleLayout}>
+          <article className={styles.articleContent}>
+            <ArticleHeader />
+            <ArticleContent />
+            <CtaCard />
+          </article>
+          <aside>
+            <ArticleSidebar />
+          </aside>
+        </section>
 
-      </section>
-      
-      <section className={styles.moreSynkra}>
-       <MoreArticles/>
-      </section>
-    </main>
-         
-             </>
-
-   );
+        <section className={styles.moreSynkra}>
+          <MoreArticles />
+        </section>
+      </main>
+    </>
+  );
 }
 export default BlogDetails;

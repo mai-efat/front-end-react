@@ -1,10 +1,10 @@
-import ThemeToggle from "../ThemeToggle/ThemeToggle";
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 function Navbar() {
-  return <>
-      <h1>navbar</h1>;
-      <ThemeToggle/>
-        </>
-    
-         
+  return (
+    <>
+      <h1>navbar</h1>
+      <ThemeToggle />
+    </>
+  );
 }
 export default Navbar;
