@@ -11,7 +11,7 @@
     border-radius: 20px;
     padding-top: 3px;
     padding-left: 8px;
-    background-color: var(--color-button);
+    background-color: #EBF2FD;
     width: 100px;
     height: 35px;
     cursor: pointer;
@@ -42,15 +42,13 @@
 
 .active-text {
     font-weight: bold;
-    color: var(--color-text-secondary);
+    color: #10399B;
     display: block;
     font-size: 22px;
 }
 
 .save {
     margin-left: 30px;
-    color: var(--color-num);
-    background-color: var(--tag-bg-2);
+    color: #1B6F4A;
     font-weight: 400;
-    padding: 5px 10px;
 }

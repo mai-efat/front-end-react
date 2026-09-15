@@ -5,13 +5,6 @@ import ArticleSidebar from './Components/articleSidebar/ArticleSidebar';
 import CtaCard from './Components/ctaCard/CtaCard';
 import MoreArticles from './Components/moreArticles/MoreArticles';
 
-
-
-
-
-
-
-
 function BlogDetails() {
          
   return (
@@ -33,6 +26,7 @@ function BlogDetails() {
       <section className={styles.moreSynkra}>
        <MoreArticles/>
       </section>
+      
     </main>
          
              </>

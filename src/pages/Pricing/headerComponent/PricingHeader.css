@@ -1,29 +1,27 @@
 header {
+    font-family: "Newsreader", serif;
     text-align: center;
     font-size: 30px;
-
+    font-weight: 900;
     width: 50%;
     line-height: 1.1;
     margin-bottom: 70px;
 }
 
-
-
 .header-span {
-    color: var(--color-text-link);
+    color: #1A56DB;
     font-style: italic;
-    font-weight: 400;
 }
 
 header p {
-    font-weight: 400;
-    color: var(--color-text-secondary);
+    font-weight: 500;
+    color: #514F4A;
     font-size: 20px;
     line-height: 1.5;
-    font-family: "dm sans", sans-serif;
 }
 
 header p span {
     font-style: italic;
-    font-weight: 700;
+    color: #514F4A;
+    font-weight: 900;
 }

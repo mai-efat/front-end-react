@@ -1,40 +1,15 @@
 
-import { useState, useEffect } from 'react';
-import './ThemeToggle.css';
+import './ThemeToggle.css'
 import Sun from './Sun.svg?react';
 import Moon from './Moon.svg?react';
-
-
+import { useTheme } from '../../Context/ThemeContext';
 
 
 function ThemeToggle() {
-
-    const [isDark, setIsDark] = useState(() => {
-        const selectedTheme = localStorage.getItem('selectedTheme');
-
-        return selectedTheme === 'dark';
-    });
-
-
-    useEffect(() => {
-
-        document.body.setAttribute(
-            'data-theme',
-            isDark ? 'dark' : 'light'
-        );
-
-        localStorage.setItem(
-            'selectedTheme',
-            isDark ? 'dark' : 'light'
-        );
-
-    }, [isDark]);
-
+    const { isDark, setIsDark } = useTheme();
 
     const ToggleChange = (e) => {
-
         setIsDark(e.target.checked);
-
     };
 
 

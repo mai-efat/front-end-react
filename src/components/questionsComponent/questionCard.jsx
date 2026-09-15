@@ -2,8 +2,8 @@
  *                           Import files and libraries
  *------------------------------------------------------------------------**/
 import { useState } from 'react';
-import DownDir from './QuestionsAssets/down-dir.svg?react';
-import DropDown from './QuestionsAssets/Dropdown.svg?react';
+import downDir from './QuestionsAssets/down-dir.svg';
+import dropDown from './QuestionsAssets/Dropdown.svg';
 
 export default function QuestionCard(info) {
   let [showAns, setShowAns] = useState(false);
@@ -15,26 +15,14 @@ export default function QuestionCard(info) {
       <div className="question-card">
         <p
           className="card-question"
-          style={{
-            background: showAns
-              ? 'var(--avatar-gray-bg)'
-              : ' var( --color-text-cta)',
-          }}
+          style={{ background: showAns ? '#E4E3DF' : ' #FCFCFD' }}
         >
           {info.question}
           <button
             onClick={toggleBtn}
-            style={{
-              background: showAns
-                ? 'var(--avatar-gray-bg)'
-                : ' var( --color-text-cta)',
-            }}
+            style={{ background: showAns ? '#E4E3DF' : '#FCFCFD' }}
           >
-            {showAns ? (
-              <DropDown className="dropdown-icon" />
-            ) : (
-              <DownDir className="dropdown-icon" />
-            )}
+            <img src={showAns ? dropDown : downDir} alt="down Direction" />
           </button>
         </p>
         <p
