@@ -6,12 +6,17 @@
     border-radius: 15px;
     width: 30%;
     height: max-content;
+<<<<<<< HEAD
     margin: 10px;
+=======
+    background-image: var(--gradient-card);
+
+>>>>>>> dev
 }
 
 
 .plan-label {
-    color: #78766F;
+    color: var(--color-text-muted);
     font-weight: 400;
     font-size: 18px;
 }
@@ -21,19 +26,19 @@
 }
 
 .card-price {
-    color: #131210;
+    color: var(--color-text);
     font-weight: 700;
     font-size: 30px;
 }
 
 .price-suffix {
-    color: #78766F;
+    color: var(--color-text-muted);
     font-weight: 400;
     font-size: 14px;
 }
 
 .plan-description {
-    color: #514F4A;
+    color: var(--color-text-secondary);
     font-weight: 400;
     font-size: 16px;
     margin: 20px 0;
@@ -54,7 +59,7 @@
     display: flex;
     margin: 20px 0;
     padding-bottom: 10px;
-    border-bottom: #e0dfdb 1px solid;
+    border-bottom: var(--border-card) 1px solid;
 
 }
 
@@ -64,7 +69,7 @@
 
 .plan-cta {
 
-    border: solid #E4E3DF 1px;
+    border: solid var(--border-card) 1px;
     border-radius: 10px;
     padding: 10px;
     background-color: white;
@@ -94,15 +99,17 @@
     height: max-content;
     width: 30%;
     position: relative;
+    background-color: var(--gradient-card);
 }
 
 .price-active .plan-label {
-    color: #1A56DB;
+    color: var(--color-text-link);
 }
 
 .price-active .plan-cta {
 
-    background-color: #1A56DB;
+    background-color: var(--color-button-bg);
+    border: none;
     color: white;
 }
 
