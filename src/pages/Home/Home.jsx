@@ -1,8 +1,10 @@
 import Questions from '../../components/questionsComponent/Questions';
+import FeatureComponent from '../../components/FeatureComponent/FeatureComponent';
+
 function Home() {
   return (
     <div>
-      <h1>welcome to home</h1>;
+      <FeatureComponent />
       <Questions />
     </div>
   );
