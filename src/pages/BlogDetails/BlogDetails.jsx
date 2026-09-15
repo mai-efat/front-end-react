@@ -4,12 +4,7 @@ import ArticleContent from './Components/articleContent/ArticleContent';
 import ArticleSidebar from './Components/articleSidebar/ArticleSidebar';
 import CtaCard from './Components/ctaCard/CtaCard';
 import MoreArticles from './Components/moreArticles/MoreArticles';
-
-
-
-
-
-
+import NewsletterCard from './Components/articleSidebar/NewsletterCard';
 
 
 function BlogDetails() {
@@ -32,6 +27,9 @@ function BlogDetails() {
       
       <section className={styles.moreSynkra}>
        <MoreArticles/>
+       <div className={styles.mobileNewsletterWrapper}>
+            <NewsletterCard variant="dark" />   
+        </div>
       </section>
     </main>
          

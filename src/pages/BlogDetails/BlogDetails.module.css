@@ -21,3 +21,16 @@
 .moreSynkra {
  margin-top: 80px;
 }
+.mobileNewsletterWrapper {
+  display: none;
+}
+
+@media (max-width: 768px) {
+    .articleLayout {
+        grid-template-columns: 1fr;
+        gap: 5px ;
+    }
+    .mobileNewsletterWrapper {
+        display: block;
+    }
+}
