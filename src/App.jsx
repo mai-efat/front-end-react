@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router';
+import { ThemeProvider } from './Context/ThemeContext'; 
 import Home from './pages/Home/Home';
 import Features from './pages/Features/Features';
 import About from './pages/About/About';
@@ -8,9 +9,12 @@ import Challenging from './pages/Challenging/Challenging';
 import Pricing from './pages/Pricing/Pricing';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
+import CookieBar from './components/CookieBar/CookieBar';
+
 
 function App() {
   return (
+      <ThemeProvider>
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -24,7 +28,9 @@ function App() {
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
       <Footer />
+      <CookieBar />
     </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

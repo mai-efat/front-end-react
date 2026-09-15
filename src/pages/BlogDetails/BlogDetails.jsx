@@ -31,6 +31,7 @@ function BlogDetails() {
             <NewsletterCard variant="dark" />   
         </div>
       </section>
+      
     </main>
          
              </>
