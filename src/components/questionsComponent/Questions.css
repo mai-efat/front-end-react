@@ -11,59 +11,50 @@
 .questions .questions-head h2 {
     font-size: 36px;
     font-weight: 500;
-    color: var(--color-text);
+    color: #131210;
 }
 
 .questions .questions-head p {
     margin-top: 20px;
     font-size: 22px;
     font-weight: 400;
-    color: var(--color-text-secondary);
+    color: #514F4A;
 }
 
 .cards-container {
     width: 100%;
 }
 
-
+.question-card {}
 
 .question-card .card-question {
     margin-top: 30px;
+    background-color: #FCFCFD;
     border: #E4E3DF solid 1px;
     display: flex;
     justify-content: space-between;
     font-size: 22px;
     font-weight: 400;
-    color: var(--color-text);
+    color: #131210;
     padding: 25px;
     border-radius: 10px;
-    background-color: var(--color-bg-secondary);
 }
 
 .question-card button {
     border: none;
+    background-color: #FCFCFD;
     cursor: pointer;
-}
-
-.question-card button {
-    color: white;
 }
 
 .card-answer {
     margin-top: -5px;
-    border: var(--border-card) solid 1px;
+    border: #E4E3DF solid 1px;
     border-radius: 0px 0 10px 10px;
-    background-color: var(--color-button);
+    background-color: #FCFCFD;
     padding: 20px;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.75;
-    color: var(--color-text-secondary);
-
-}
-
-.question-card button .dropdown-icon {
-    stroke: var(--color-text);
-
+    color: #514F4A;
 
 }

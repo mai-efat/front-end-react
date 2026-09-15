@@ -1,41 +1,39 @@
-import { useState, useEffect } from 'react';
-import './ThemeToggle.css';
+
+import './ThemeToggle.css'
 import Sun from './Sun.svg?react';
 import Moon from './Moon.svg?react';
+import { useTheme } from '../../Context/ThemeContext';
+
 
 function ThemeToggle() {
-  const [isDark, setIsDark] = useState(() => {
-    const selectedTheme = localStorage.getItem('selectedTheme');
+    const { isDark, setIsDark } = useTheme();
 
-    return selectedTheme === 'dark';
-  });
+    const ToggleChange = (e) => {
+        setIsDark(e.target.checked);
+    };
 
-  useEffect(() => {
-    document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
 
-    localStorage.setItem('selectedTheme', isDark ? 'dark' : 'light');
-  }, [isDark]);
+    return (
+        <div className="dark_mode">
 
-  const ToggleChange = (e) => {
-    setIsDark(e.target.checked);
-  };
+            <input
+                className="dark_mode_input"
+                type="checkbox"
+                id="darkmode-toggle"
+                onChange={ToggleChange}
+                checked={isDark}
+            />
 
-  return (
-    <div className="dark_mode">
-      <input
-        className="dark_mode_input"
-        type="checkbox"
-        id="darkmode-toggle"
-        onChange={ToggleChange}
-        checked={isDark}
-      />
+            <label
+                className="dark_mode_label"
+                htmlFor="darkmode-toggle"
+            >
+               <Sun />
+               <Moon />
+            </label>
 
-      <label className="dark_mode_label" htmlFor="darkmode-toggle">
-        <Sun />
-        <Moon />
-      </label>
-    </div>
-  );
+        </div>
+    );
 }
 
 export default ThemeToggle;
