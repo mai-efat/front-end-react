@@ -16,7 +16,7 @@ function CtaCard () {
                  <span className={styles.talkToTeamText}> Talk to our team instead </span>
                  <img src={headset} alt="headset-icon" className={styles.headsetIcon} />
                 </button>
-                 <p className={styles.ctaNote}>*Ship your first live playbook in 10 minutes.</p>
+                 <p className={styles.ctaNote}><span>*</span>Ship your first live playbook in 10 minutes.</p>
 
             </div>
         </div>
