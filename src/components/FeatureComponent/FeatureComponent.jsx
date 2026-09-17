@@ -33,6 +33,7 @@ const Percentage = () => (
 
 export default function FeatureComponent() {
   return (
+    <div className={styles.outer}>
     <section>
       <div className={styles.topTitle}>
         <div className={styles.topLeft}>
@@ -256,5 +257,6 @@ export default function FeatureComponent() {
         </div>
       </div>
     </section>
+    </div>
   );
 }
