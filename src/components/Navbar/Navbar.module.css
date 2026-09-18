@@ -73,7 +73,7 @@
 
 .nav-link.is-active::after,
 .resources-menu.is-active::after {
-  background: #1F1E1C;
+  background: #1f1e1c;
   bottom: 18px;
   content: '';
   height: 2px;
@@ -125,7 +125,9 @@
 .resources-dropdown a {
   border-radius: 5px;
   color: var(--color-text);
-  font: 400 12px/1.2 'Work Sans', sans-serif;
+  font:
+    400 12px/1.2 'Work Sans',
+    sans-serif;
   padding: 10px;
   text-decoration: none;
 }
@@ -169,6 +171,10 @@
   padding: 13px 24px;
   width: 128px;
   height: 44px;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .sign-up:hover {
@@ -177,6 +183,57 @@
 
 .mobile-sign-up {
   display: none;
+}
+
+.profile-control {
+  align-items: center;
+  color: var(--color-text);
+  display: flex;
+  font:
+    500 14px/1.2 'DM Sans',
+    sans-serif;
+  gap: 8px;
+  max-width: 190px;
+  text-decoration: none;
+}
+
+.profile-control:hover {
+  color: var(--color-primary);
+}
+
+.avatar,
+.mobile-profile {
+  align-items: center;
+  background: var(--avatar-blue-bg);
+  border-radius: 50%;
+  color: var(--avatar-blue-text);
+  display: inline-flex;
+  flex: 0 0 34px;
+  font:
+    700 12px 'DM Sans',
+    sans-serif;
+  height: 34px;
+  justify-content: center;
+  overflow: hidden;
+  width: 34px;
+}
+
+.avatar img,
+.mobile-profile img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.profile-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobile-profile {
+  display: none;
+  text-decoration: none;
 }
 
 .menu-toggle {
@@ -219,7 +276,7 @@
   }
 
   .mobile-sign-up {
-    background: #1a56db;
+    background: #1a5edb;
     border: 0;
     border-radius: 10px;
     color: #fff;
@@ -232,7 +289,18 @@
     margin-left: auto;
     order: 3;
     padding: 0 24px;
-    width: 164px;
+    width: 160px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  .mobile-profile {
+    display: inline-flex;
+    margin-left: auto;
+    order: 3;
   }
 
   .mobile-sign-up:hover {
@@ -296,5 +364,9 @@
   .nav-actions .dark_mode {
     margin-right: auto;
     transform-origin: left center;
+  }
+
+  .profile-control {
+    margin-left: auto;
   }
 }
