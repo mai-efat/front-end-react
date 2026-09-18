@@ -285,22 +285,7 @@
     width: 100%;
     margin: 0 auto;
   }
-  /* 
-  .cardBadg {
-    margin-bottom: 15px;
-  }
-  .description {
-    margin-bottom: 15px;
-  }
-  .features {
-    margin-bottom: 15px;
-    gap: 10px;
-  }
 
-  .feature {
-    gap: 7px;
-    line-height: 1.5;
-  } */
 }
 @media (max-width: 768px) {
   .header {

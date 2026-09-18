@@ -147,7 +147,7 @@ function TimelineItem({ release, index }) {
 /**
  * Bottom converting banner and brand quote section.
  */
-function CallToAction() {
+export function CallToAction() {
   return (
     <section className={styles.callToAction}>
       <img className={styles.ctaOverlay} src={Ellipse26} alt="" aria-hidden="true" />

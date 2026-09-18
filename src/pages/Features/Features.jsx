@@ -2,6 +2,7 @@ import styles from './Features.module.css';
 import cardimg from '../../assets/Background.png';
 import FeatureComponent from '../../components/FeatureComponent/FeatureComponent';
 import bg from '../../assets/bg.png';
+import { CallToAction } from '../Challenging/Challenging';
 
 const Icon = () => (
   <svg
@@ -246,6 +247,7 @@ function Features() {
             </button>
           </div>
         </div>
+        <CallToAction />
       </div>
     </div>
   );
