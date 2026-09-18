@@ -143,7 +143,8 @@
 
 @media (max-width:393px) {
     .asideCardDark {
-        width: 91.1% ;
-        margin-left: 17px;
+        width: 96% ;
+        margin-left: 8px;
+        margin-top: -20px;
     }
 }

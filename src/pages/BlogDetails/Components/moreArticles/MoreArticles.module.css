@@ -1,5 +1,6 @@
 .MoreArticles {
     width: 100%;
+    margin-bottom: 50px;
 }
 
 .MoreArticleHeader {
@@ -63,7 +64,7 @@
   flex-direction: column;
   flex: 0 0 auto;
   width: 320px;
-  background-color:var(--color-bg);
+  background-color:var(--article-bg);
   border: 1px solid var(--border-card);
   border-radius: 12px;
   overflow: hidden;
@@ -217,6 +218,19 @@
 }
 
 }
+@media (min-width: 769px ) and (max-width: 820px) {
+ .articleCard {
+    width: 335px;
+    overflow-x: auto;
+  }
+  .articleImage img {
+    padding: 20px;
+    height: 200px;
+  }
+  .ArticlesList {
+    overflow-x: auto;
+  }
+    }
 
 
 @media (max-width: 400px) {
