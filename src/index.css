@@ -49,6 +49,7 @@
   --tag-bg-4:  #0F766E;
   --color-num:#1B6F4A;
   --color-arrow:#A09E97;
+  --article-bg :#FCFCFD;
 
    /* //avatar colores bg and text   */
   --avatar-blue-bg: #EBF2FD;
@@ -123,7 +124,8 @@
   --tag-bg-3: #4D1212;
   --tag-bg-4:  #134E4A;
   --color-num:#EDFAF3;
-  --color-arrow:#A09E97;    
+  --color-arrow:#A09E97; 
+  --article-bg :none;   
 
   /* //avatar colores bg and text   */
   --avatar-blue-bg: #081D5B;

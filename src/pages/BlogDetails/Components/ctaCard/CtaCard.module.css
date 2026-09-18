@@ -118,6 +118,39 @@
     }
 }
 
+
+
+
+
+
+
+@media (min-width: 769px ) and (max-width: 820px) {
+
+.talkToTeamText {
+        padding-left: 66px;
+    }
+
+    .creatAccount ,
+    .talkToTeam {
+     padding: 20px;
+     width: 100%;
+
+    }
+    .ctaCard {
+        height: 425px;
+        width: 408px;
+    }
+
+
+}
+
+
+
+
+
+
+
+
 @media (min-width: 768px) and (max-width: 820px) and (min-height: 900px) {
     .talkToTeam {
         padding-right: 65px;
@@ -198,6 +231,6 @@
       margin-right: 10px;
     }
     .talkToTeamText {
-        padding-left: 30px;
+        padding-left: 38px;
     }
 }
