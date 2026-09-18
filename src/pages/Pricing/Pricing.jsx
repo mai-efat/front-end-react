@@ -5,6 +5,7 @@ import './Pricing.css';
 import PricingHeader from './headerComponent/PricingHeader';
 import PriceDetails from './pricingConatiner/PriceContainer';
 import Questions from '../../components/questionsComponent/Questions';
+import CtaSection from '../About/CTASection/CtaSection';
 function Pricing() {
   return (
     <div className="pricing-page">
@@ -17,7 +18,10 @@ function Pricing() {
       >
         <PricingHeader />
         <PriceDetails />
-        <Questions />
+        <div style={{ width: '100%' }}>
+          <Questions />
+          <CtaSection />
+        </div>
       </div>
     </div>
   );
