@@ -1,6 +1,7 @@
 import Questions from '../../components/questionsComponent/Questions';
 import Heroimg from '../../assets/Home/hero-card.svg';
 import styles from './Home.module.css';
+import FeatureComponent from '../../components/FeatureComponent/FeatureComponent';
 
 // Partner / Client brand logos
 const companies = ['VOLT', 'SPHERE', 'LUMINA', 'ORBIT', 'NEXUS'];
@@ -336,6 +337,7 @@ export default function Home() {
     <main className={styles.page}>
       <HeroSection />
       <TrustedSection />
+      <FeatureComponent />
       <StatsSection />
       <TestimonialsSection/>
       <Questions />

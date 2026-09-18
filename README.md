@@ -25,15 +25,15 @@ A multi-page marketing/product website built with React 19 and React Router 8. T
 
 ## 1. Project Overview
 
-| Property | Value |
-|---|---|
-| **Project name** | `synkra-project` |
-| **React version** | 19.2.8 |
-| **Router** | React Router 8.3.1 |
-| **Build tool** | Vite 8.2.2 |
-| **Package manager** | npm (lockfile version 3) |
-| **Language** | JavaScript (JSX) — no TypeScript |
-| **Styling** | CSS Modules + global `index.css` |
+| Property            | Value                            |
+| ------------------- | -------------------------------- |
+| **Project name**    | `synkra-project`                 |
+| **React version**   | 19.2.8                           |
+| **Router**          | React Router 8.3.1               |
+| **Build tool**      | Vite 8.2.2                       |
+| **Package manager** | npm (lockfile version 3)         |
+| **Language**        | JavaScript (JSX) — no TypeScript |
+| **Styling**         | CSS Modules + global `index.css` |
 
 The site has seven pages: Home, Features, About, Blog, Blog Details, Challenging, and Pricing. The full-page layout wraps every route with a shared `Navbar` at the top and `Footer` at the bottom.
 
@@ -70,13 +70,13 @@ There are no `.env` files in this project at this time. No environment variables
 
 All scripts are defined in `package.json`:
 
-| Script | Command | What it does |
-|---|---|---|
-| `dev` | `vite` | Starts the Vite dev server with HMR at `http://localhost:5173` |
-| `build` | `vite build` | Compiles and bundles the app for production into `dist/` |
-| `preview` | `vite preview` | Serves the production `dist/` build locally for a final check |
-| `lint` | `eslint .` | Runs ESLint across all `.js` and `.jsx` files |
-| `format` | `prettier . --write` | Formats every file in the project in-place |
+| Script         | Command              | What it does                                                                           |
+| -------------- | -------------------- | -------------------------------------------------------------------------------------- |
+| `dev`          | `vite`               | Starts the Vite dev server with HMR at `http://localhost:5173`                         |
+| `build`        | `vite build`         | Compiles and bundles the app for production into `dist/`                               |
+| `preview`      | `vite preview`       | Serves the production `dist/` build locally for a final check                          |
+| `lint`         | `eslint .`           | Runs ESLint across all `.js` and `.jsx` files                                          |
+| `format`       | `prettier . --write` | Formats every file in the project in-place                                             |
 | `format:check` | `prettier . --check` | Checks formatting without writing — exits non-zero if any file is wrong (useful in CI) |
 
 ```bash
@@ -104,7 +104,7 @@ npm run preview
 synkra-project/
 ├── public/
 │   ├── favicon.svg          # Browser tab icon
-│   
+│
 ├── src/
 │   ├── assets/              # Static assets (images, fonts, etc.) imported by components
 │   ├── components/          # Shared UI components used across multiple pages
@@ -247,10 +247,10 @@ This is the project's only styling mechanism aside from the global reset in `src
 
 CSS Module files must use the `.module.css` extension. This is what tells Vite to process them as modules rather than injecting them as global styles.
 
-| ✅ Correct | ❌ Incorrect |
-|---|---|
-| `Navbar.module.css` | `Navbar.css` |
-| `Home.module.css` | `home-styles.css` |
+| ✅ Correct               | ❌ Incorrect                            |
+| ------------------------ | --------------------------------------- |
+| `Navbar.module.css`      | `Navbar.css`                            |
+| `Home.module.css`        | `home-styles.css`                       |
 | `HeroSection.module.css` | `hero.module.scss` (Sass not installed) |
 
 Name the file after the component it belongs to, using the same `PascalCase` as the component itself.
@@ -298,9 +298,7 @@ The corresponding CSS file uses plain class selectors — no special syntax need
 Use a template literal to apply more than one class to the same element:
 
 ```jsx
-<button className={`${styles.btn} ${styles.btnPrimary}`}>
-  Get Started
-</button>
+<button className={`${styles.btn} ${styles.btnPrimary}`}>Get Started</button>
 ```
 
 ```css
@@ -398,11 +396,11 @@ Reference nested elements as separate `styles.cardTitle` class names in JSX — 
 
 ### Global styles vs. module styles
 
-| Use `src/index.css` for | Use a `.module.css` file for |
-|---|---|
-| CSS reset (`box-sizing`, `margin`, `padding`) | Any component-specific layout or appearance |
+| Use `src/index.css` for                          | Use a `.module.css` file for                                 |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| CSS reset (`box-sizing`, `margin`, `padding`)    | Any component-specific layout or appearance                  |
 | Base `body` styles (`min-height`, `font-family`) | Page sections, cards, buttons, typography within a component |
-| CSS custom properties (if added in future) | Hover states, responsive breakpoints for one component |
+| CSS custom properties (if added in future)       | Hover states, responsive breakpoints for one component       |
 
 Do not add component-specific styles to `index.css`. Keep it minimal — it is the only file whose styles are truly global.
 
@@ -418,7 +416,6 @@ Do not add component-specific styles to `index.css`. Keep it minimal — it is t
 ## 6. ESLint
 
 ### Configuration format
-
 
 The project uses **ESLint Flat Config** — the modern configuration system introduced in ESLint 9+. The config lives in `eslint.config.js` (not `.eslintrc`). There is no `.eslintrc` file; if you see one, it should not be there.
 
@@ -453,12 +450,12 @@ export default defineConfig([
 
 ### Active rule sets
 
-| Plugin / Config | What it enforces |
-|---|---|
-| `@eslint/js` recommended | Core JavaScript rules: no unused variables, no undeclared variables, no `var`, etc. |
-| `eslint-plugin-react-hooks` recommended | Enforces the Rules of Hooks (`rules-of-hooks`, `exhaustive-deps`). Calling a hook conditionally or in a loop is an error. |
-| `eslint-plugin-react-refresh` (vite preset) | Warns when a component file exports something other than React components, which would break Vite's HMR. |
-| `eslint-config-prettier` | **Disables all ESLint rules that conflict with Prettier's formatting.** This is the last config in the array so it overrides any formatting rules from the configs above. |
+| Plugin / Config                             | What it enforces                                                                                                                                                          |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@eslint/js` recommended                    | Core JavaScript rules: no unused variables, no undeclared variables, no `var`, etc.                                                                                       |
+| `eslint-plugin-react-hooks` recommended     | Enforces the Rules of Hooks (`rules-of-hooks`, `exhaustive-deps`). Calling a hook conditionally or in a loop is an error.                                                 |
+| `eslint-plugin-react-refresh` (vite preset) | Warns when a component file exports something other than React components, which would break Vite's HMR.                                                                  |
+| `eslint-config-prettier`                    | **Disables all ESLint rules that conflict with Prettier's formatting.** This is the last config in the array so it overrides any formatting rules from the configs above. |
 
 ### What developers should expect
 
@@ -500,13 +497,13 @@ Prettier is configured via `.prettierrc` at the project root:
 
 ### What these rules mean for your code
 
-| Rule | Value | Effect |
-|---|---|---|
-| `semi` | `true` | Semicolons are **required** at the end of statements. |
-| `tabWidth` | `2` | Indentation uses **2 spaces** (never tabs). |
-| `singleQuote` | `true` | Strings use **single quotes** — `'hello'`, not `"hello"`. |
-| `trailingComma` | `"all"` | Trailing commas are added **everywhere valid** (function parameters, arrays, objects, import lists). |
-| `endOfLine` | `"lf"` | Line endings are Unix-style `\n`. On Windows, ensure your editor is configured to save with LF, not CRLF. |
+| Rule            | Value   | Effect                                                                                                    |
+| --------------- | ------- | --------------------------------------------------------------------------------------------------------- |
+| `semi`          | `true`  | Semicolons are **required** at the end of statements.                                                     |
+| `tabWidth`      | `2`     | Indentation uses **2 spaces** (never tabs).                                                               |
+| `singleQuote`   | `true`  | Strings use **single quotes** — `'hello'`, not `"hello"`.                                                 |
+| `trailingComma` | `"all"` | Trailing commas are added **everywhere valid** (function parameters, arrays, objects, import lists).      |
+| `endOfLine`     | `"lf"`  | Line endings are Unix-style `\n`. On Windows, ensure your editor is configured to save with LF, not CRLF. |
 
 All other Prettier options (print width, bracket spacing, arrow function parens, JSX formatting) use Prettier's defaults:
 
@@ -589,10 +586,10 @@ Until `.vscode/settings.json` and `.vscode/extensions.json` are added to the rep
 
 **Recommended extensions:**
 
-| Extension | ID | Purpose |
-|---|---|---|
-| ESLint | `dbaeumer.vscode-eslint` | Shows lint errors inline as you type |
-| Prettier | `esbenp.prettier-vscode` | Formats on save using the project's `.prettierrc` |
+| Extension | ID                       | Purpose                                           |
+| --------- | ------------------------ | ------------------------------------------------- |
+| ESLint    | `dbaeumer.vscode-eslint` | Shows lint errors inline as you type              |
+| Prettier  | `esbenp.prettier-vscode` | Formats on save using the project's `.prettierrc` |
 
 **Recommended `settings.json` (add to your local `.vscode/settings.json`):**
 
@@ -619,10 +616,10 @@ Until `.vscode/settings.json` and `.vscode/extensions.json` are added to the rep
 
 The repository has two branches:
 
-| Branch | Purpose |
-|---|---|
-| `main` | Stable, production-ready code |
-| `dev` | Active development — this is where the team works |
+| Branch | Purpose                                           |
+| ------ | ------------------------------------------------- |
+| `main` | Stable, production-ready code                     |
+| `dev`  | Active development — this is where the team works |
 
 The `dev` branch was created from `main` and is tracked against `origin/dev`. **Do not commit directly to `main`.**
 
@@ -685,11 +682,7 @@ src/components/
 ```jsx
 // src/components/Button/Button.jsx
 function Button({ label, onClick }) {
-  return (
-    <button onClick={onClick}>
-      {label}
-    </button>
-  );
+  return <button onClick={onClick}>{label}</button>;
 }
 
 export default Button;
@@ -718,7 +711,7 @@ src/pages/
 import Contact from './pages/Contact/Contact';
 
 // Inside <Routes>:
-<Route path="/contact" element={<Contact />} />
+<Route path="/contact" element={<Contact />} />;
 ```
 
 ### Add a sub-component inside a page
@@ -824,27 +817,27 @@ Add a `.env.example` file with placeholder values when real environment variable
 
 ### Runtime dependencies
 
-| Package | Version | Purpose |
-|---|---|---|
-| `react` | ^19.2.8 | Core UI library |
-| `react-dom` | ^19.2.8 | Renders React components into the browser DOM |
-| `react-router` | ^8.3.1 | Client-side routing — `BrowserRouter`, `Routes`, `Route` |
+| Package        | Version | Purpose                                                  |
+| -------------- | ------- | -------------------------------------------------------- |
+| `react`        | ^19.2.8 | Core UI library                                          |
+| `react-dom`    | ^19.2.8 | Renders React components into the browser DOM            |
+| `react-router` | ^8.3.1  | Client-side routing — `BrowserRouter`, `Routes`, `Route` |
 
 ### Dev dependencies
 
-| Package | Version | Purpose |
-|---|---|---|
-| `vite` | ^8.2.2 | Build tool and dev server with HMR |
-| `@vitejs/plugin-react` | ^6.1.0 | Enables React/JSX support in Vite (uses Oxc/Babel) |
-| `eslint` | ^10.9.0 | JavaScript linter |
-| `@eslint/js` | ^10.0.1 | ESLint's recommended JS rule set |
-| `eslint-plugin-react-hooks` | ^7.1.1 | Enforces React Hook rules |
-| `eslint-plugin-react-refresh` | ^0.5.4 | Warns about exports that break Vite HMR |
-| `eslint-config-prettier` | ^10.1.8 | Disables ESLint rules that conflict with Prettier |
-| `prettier` | ^3.9.6 | Code formatter |
-| `globals` | ^17.11.0 | Provides global variable lists (e.g., `browser`) for ESLint |
-| `@types/react` | ^19.2.18 | TypeScript type definitions for React (used by editor tooling even in JS projects) |
-| `@types/react-dom` | ^19.2.4 | TypeScript type definitions for React DOM |
+| Package                       | Version  | Purpose                                                                            |
+| ----------------------------- | -------- | ---------------------------------------------------------------------------------- |
+| `vite`                        | ^8.2.2   | Build tool and dev server with HMR                                                 |
+| `@vitejs/plugin-react`        | ^6.1.0   | Enables React/JSX support in Vite (uses Oxc/Babel)                                 |
+| `eslint`                      | ^10.9.0  | JavaScript linter                                                                  |
+| `@eslint/js`                  | ^10.0.1  | ESLint's recommended JS rule set                                                   |
+| `eslint-plugin-react-hooks`   | ^7.1.1   | Enforces React Hook rules                                                          |
+| `eslint-plugin-react-refresh` | ^0.5.4   | Warns about exports that break Vite HMR                                            |
+| `eslint-config-prettier`      | ^10.1.8  | Disables ESLint rules that conflict with Prettier                                  |
+| `prettier`                    | ^3.9.6   | Code formatter                                                                     |
+| `globals`                     | ^17.11.0 | Provides global variable lists (e.g., `browser`) for ESLint                        |
+| `@types/react`                | ^19.2.18 | TypeScript type definitions for React (used by editor tooling even in JS projects) |
+| `@types/react-dom`            | ^19.2.4  | TypeScript type definitions for React DOM                                          |
 
 ---
 
