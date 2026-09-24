@@ -1,12 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
 # Synkra — Front-End React Project
 
 A multi-page marketing/product website built with React 19 and React Router 8. The project is currently in its **initial scaffold phase** — all routes and pages are wired up and ready for content, but the UI implementation is still ahead. This README exists to help every new team member understand exactly how the project is structured, how tooling is configured, and how to contribute safely from day one.
@@ -19,29 +10,30 @@ A multi-page marketing/product website built with React 19 and React Router 8. T
 2. [Getting Started](#2-getting-started)
 3. [Project Structure](#3-project-structure)
 4. [Architecture](#4-architecture)
-5. [ESLint](#5-eslint)
-6. [Prettier](#6-prettier)
-7. [ESLint + Prettier Relationship](#7-eslint--prettier-relationship)
-8. [VS Code Setup](#8-vs-code-setup)
-9. [Git & Team Workflow](#9-git--team-workflow)
-10. [Common Developer Tasks](#10-common-developer-tasks)
-11. [Environment Variables](#11-environment-variables)
-12. [Dependencies](#12-dependencies)
-13. [Troubleshooting](#13-troubleshooting)
+5. [CSS Modules](#5-css-modules)
+6. [ESLint](#6-eslint)
+7. [Prettier](#7-prettier)
+8. [ESLint + Prettier Relationship](#8-eslint--prettier-relationship)
+9. [VS Code Setup](#9-vs-code-setup)
+10. [Git & Team Workflow](#10-git--team-workflow)
+11. [Common Developer Tasks](#11-common-developer-tasks)
+12. [Environment Variables](#12-environment-variables)
+13. [Dependencies](#13-dependencies)
+14. [Troubleshooting](#14-troubleshooting)
 
 ---
 
 ## 1. Project Overview
 
-| Property | Value |
-|---|---|
-| **Project name** | `synkra-project` |
-| **React version** | 19.2.8 |
-| **Router** | React Router 8.3.1 |
-| **Build tool** | Vite 8.2.2 |
-| **Package manager** | npm (lockfile version 3) |
-| **Language** | JavaScript (JSX) — no TypeScript |
-| **Styling** | CSS Modules + global `index.css` |
+| Property            | Value                            |
+| ------------------- | -------------------------------- |
+| **Project name**    | `synkra-project`                 |
+| **React version**   | 19.2.8                           |
+| **Router**          | React Router 8.3.1               |
+| **Build tool**      | Vite 8.2.2                       |
+| **Package manager** | npm (lockfile version 3)         |
+| **Language**        | JavaScript (JSX) — no TypeScript |
+| **Styling**         | CSS Modules + global `index.css` |
 
 The site has seven pages: Home, Features, About, Blog, Blog Details, Challenging, and Pricing. The full-page layout wraps every route with a shared `Navbar` at the top and `Footer` at the bottom.
 
@@ -78,13 +70,13 @@ There are no `.env` files in this project at this time. No environment variables
 
 All scripts are defined in `package.json`:
 
-| Script | Command | What it does |
-|---|---|---|
-| `dev` | `vite` | Starts the Vite dev server with HMR at `http://localhost:5173` |
-| `build` | `vite build` | Compiles and bundles the app for production into `dist/` |
-| `preview` | `vite preview` | Serves the production `dist/` build locally for a final check |
-| `lint` | `eslint .` | Runs ESLint across all `.js` and `.jsx` files |
-| `format` | `prettier . --write` | Formats every file in the project in-place |
+| Script         | Command              | What it does                                                                           |
+| -------------- | -------------------- | -------------------------------------------------------------------------------------- |
+| `dev`          | `vite`               | Starts the Vite dev server with HMR at `http://localhost:5173`                         |
+| `build`        | `vite build`         | Compiles and bundles the app for production into `dist/`                               |
+| `preview`      | `vite preview`       | Serves the production `dist/` build locally for a final check                          |
+| `lint`         | `eslint .`           | Runs ESLint across all `.js` and `.jsx` files                                          |
+| `format`       | `prettier . --write` | Formats every file in the project in-place                                             |
 | `format:check` | `prettier . --check` | Checks formatting without writing — exits non-zero if any file is wrong (useful in CI) |
 
 ```bash
@@ -111,7 +103,8 @@ npm run preview
 ```text
 synkra-project/
 ├── public/
-│   
+│   ├── favicon.svg          # Browser tab icon
+│
 ├── src/
 │   ├── assets/              # Static assets (images, fonts, etc.) imported by components
 │   ├── components/          # Shared UI components used across multiple pages
@@ -163,7 +156,7 @@ synkra-project/
 
 **`src/assets/`** — Static files (images, fonts, SVGs) that are imported directly by JavaScript/JSX. Files here are bundled by Vite and get content-hashed filenames in production. Currently empty — add assets here as the UI is built out.
 
-**`public/`** — Files served as-is without processing. 
+**`public/`** — Files served as-is without processing. `favicon.svg` and `icons.svg` live here. Reference them by absolute path (`/favicon.svg`), not by import.
 
 **`src/index.css`** — Global reset and base styles applied to every page. Currently sets `box-sizing: border-box`, strips default margin/padding, and ensures `min-height: 100vh` on `body`. Keep this file minimal — use CSS Modules for component-scoped styles.
 
@@ -226,7 +219,201 @@ There is no `hooks/`, `services/`, or `utils/` folder at this point. When these 
 
 ---
 
-## 5. ESLint
+## 5. CSS Modules
+
+### What CSS Modules are
+
+A CSS Module is a `.css` file where every class name is automatically scoped to the component that imports it. Vite supports CSS Modules out of the box — no extra configuration or packages are needed in this project.
+
+When Vite processes a `.module.css` file, it transforms each class name into a unique, collision-proof string (e.g., `hero` becomes something like `Home_hero__3xKp1` in the browser). This means you can use short, descriptive class names like `.hero` or `.card` in every component without any risk of one component's styles leaking into another.
+
+### Why this project uses CSS Modules
+
+Every component and page in this project already has its own `.module.css` file created alongside its `.jsx` file:
+
+```
+src/components/Navbar/
+├── Navbar.jsx
+└── Navbar.module.css   ← scoped styles for Navbar only
+
+src/pages/Home/
+├── Home.jsx
+└── Home.module.css     ← scoped styles for Home only
+```
+
+This is the project's only styling mechanism aside from the global reset in `src/index.css`. There is no CSS-in-JS library, no Tailwind, and no Sass — plain CSS Modules with standard CSS syntax.
+
+### File naming
+
+CSS Module files must use the `.module.css` extension. This is what tells Vite to process them as modules rather than injecting them as global styles.
+
+| ✅ Correct               | ❌ Incorrect                            |
+| ------------------------ | --------------------------------------- |
+| `Navbar.module.css`      | `Navbar.css`                            |
+| `Home.module.css`        | `home-styles.css`                       |
+| `HeroSection.module.css` | `hero.module.scss` (Sass not installed) |
+
+Name the file after the component it belongs to, using the same `PascalCase` as the component itself.
+
+### Importing and using a CSS Module
+
+Import the module as a default import at the top of the component file. The conventional name for the import is `styles`:
+
+```jsx
+// src/pages/Home/Home.jsx
+import styles from './Home.module.css';
+
+function Home() {
+  return (
+    <section className={styles.hero}>
+      <h1 className={styles.title}>Welcome to Synkra</h1>
+    </section>
+  );
+}
+
+export default Home;
+```
+
+The corresponding CSS file uses plain class selectors — no special syntax needed:
+
+```css
+/* src/pages/Home/Home.module.css */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+```
+
+> **Always use `className={styles.className}`** — not a plain string like `className="hero"`. A plain string bypasses the module system and will reference a global class that does not exist.
+
+### Combining multiple classes
+
+Use a template literal to apply more than one class to the same element:
+
+```jsx
+<button className={`${styles.btn} ${styles.btnPrimary}`}>Get Started</button>
+```
+
+```css
+/* Pricing.module.css */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btnPrimary {
+  background-color: #4f46e5;
+  color: #fff;
+}
+```
+
+Avoid constructing class strings dynamically from variables unless you have a clear reason — it makes styles harder to trace.
+
+### Conditional classes
+
+When a class should only be applied based on state or a prop, use a ternary inside the template literal:
+
+```jsx
+<li className={`${styles.navItem} ${isActive ? styles.active : ''}`}>
+  Features
+</li>
+```
+
+### Responsive styles and media queries
+
+Write `@media` queries directly inside the `.module.css` file. They are scoped like any other rule:
+
+```css
+/* Navbar.module.css */
+.navList {
+  display: flex;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .navList {
+    display: none;
+  }
+
+  .navList.open {
+    display: flex;
+    flex-direction: column;
+  }
+}
+```
+
+### Pseudo-classes and pseudo-elements
+
+Use them directly on the scoped class — no special handling required:
+
+```css
+/* Footer.module.css */
+.link {
+  color: #a5b4fc;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.divider::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: #e5e7eb;
+}
+```
+
+### Nested selectors
+
+CSS Modules support standard CSS nesting (native CSS nesting, no preprocessor needed in modern browsers via Vite). Keep nesting shallow — one level is usually enough:
+
+```css
+/* Blog.module.css */
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.card .cardTitle {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+```
+
+Reference nested elements as separate `styles.cardTitle` class names in JSX — do not rely on the descendant selector alone if the inner element might be reused independently.
+
+### Global styles vs. module styles
+
+| Use `src/index.css` for                          | Use a `.module.css` file for                                 |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| CSS reset (`box-sizing`, `margin`, `padding`)    | Any component-specific layout or appearance                  |
+| Base `body` styles (`min-height`, `font-family`) | Page sections, cards, buttons, typography within a component |
+| CSS custom properties (if added in future)       | Hover states, responsive breakpoints for one component       |
+
+Do not add component-specific styles to `index.css`. Keep it minimal — it is the only file whose styles are truly global.
+
+### What to avoid
+
+- **Do not use plain `className="myClass"`** to reference a module class — it will silently do nothing because the scoped class name is different at runtime.
+- **Do not import a `.module.css` from a different component** to reuse its classes. Extract shared styles into a shared component instead.
+- **Do not create a non-module `.css` file** alongside a component (e.g., `Navbar.css`). Unless you intentionally want global styles, always use `.module.css`.
+- **Do not use `!important`** — if specificity is a problem, restructure the selectors.
+
+---
+
+## 6. ESLint
 
 ### Configuration format
 
@@ -263,12 +450,12 @@ export default defineConfig([
 
 ### Active rule sets
 
-| Plugin / Config | What it enforces |
-|---|---|
-| `@eslint/js` recommended | Core JavaScript rules: no unused variables, no undeclared variables, no `var`, etc. |
-| `eslint-plugin-react-hooks` recommended | Enforces the Rules of Hooks (`rules-of-hooks`, `exhaustive-deps`). Calling a hook conditionally or in a loop is an error. |
-| `eslint-plugin-react-refresh` (vite preset) | Warns when a component file exports something other than React components, which would break Vite's HMR. |
-| `eslint-config-prettier` | **Disables all ESLint rules that conflict with Prettier's formatting.** This is the last config in the array so it overrides any formatting rules from the configs above. |
+| Plugin / Config                             | What it enforces                                                                                                                                                          |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@eslint/js` recommended                    | Core JavaScript rules: no unused variables, no undeclared variables, no `var`, etc.                                                                                       |
+| `eslint-plugin-react-hooks` recommended     | Enforces the Rules of Hooks (`rules-of-hooks`, `exhaustive-deps`). Calling a hook conditionally or in a loop is an error.                                                 |
+| `eslint-plugin-react-refresh` (vite preset) | Warns when a component file exports something other than React components, which would break Vite's HMR.                                                                  |
+| `eslint-config-prettier`                    | **Disables all ESLint rules that conflict with Prettier's formatting.** This is the last config in the array so it overrides any formatting rules from the configs above. |
 
 ### What developers should expect
 
@@ -292,7 +479,7 @@ npx eslint . --fix
 
 ---
 
-## 6. Prettier
+## 7. Prettier
 
 ### Configuration
 
@@ -310,13 +497,13 @@ Prettier is configured via `.prettierrc` at the project root:
 
 ### What these rules mean for your code
 
-| Rule | Value | Effect |
-|---|---|---|
-| `semi` | `true` | Semicolons are **required** at the end of statements. |
-| `tabWidth` | `2` | Indentation uses **2 spaces** (never tabs). |
-| `singleQuote` | `true` | Strings use **single quotes** — `'hello'`, not `"hello"`. |
-| `trailingComma` | `"all"` | Trailing commas are added **everywhere valid** (function parameters, arrays, objects, import lists). |
-| `endOfLine` | `"lf"` | Line endings are Unix-style `\n`. On Windows, ensure your editor is configured to save with LF, not CRLF. |
+| Rule            | Value   | Effect                                                                                                    |
+| --------------- | ------- | --------------------------------------------------------------------------------------------------------- |
+| `semi`          | `true`  | Semicolons are **required** at the end of statements.                                                     |
+| `tabWidth`      | `2`     | Indentation uses **2 spaces** (never tabs).                                                               |
+| `singleQuote`   | `true`  | Strings use **single quotes** — `'hello'`, not `"hello"`.                                                 |
+| `trailingComma` | `"all"` | Trailing commas are added **everywhere valid** (function parameters, arrays, objects, import lists).      |
+| `endOfLine`     | `"lf"`  | Line endings are Unix-style `\n`. On Windows, ensure your editor is configured to save with LF, not CRLF. |
 
 All other Prettier options (print width, bracket spacing, arrow function parens, JSX formatting) use Prettier's defaults:
 
@@ -339,7 +526,7 @@ If `npm run format:check` exits with a non-zero code, there are files that need 
 
 ---
 
-## 7. ESLint + Prettier Relationship
+## 8. ESLint + Prettier Relationship
 
 ### The division of responsibility
 
@@ -380,7 +567,7 @@ There are no pre-commit hooks (Husky, lint-staged) set up yet, so this workflow 
 
 ---
 
-## 8. VS Code Setup
+## 9. VS Code Setup
 
 ### What exists in the project
 
@@ -399,10 +586,10 @@ Until `.vscode/settings.json` and `.vscode/extensions.json` are added to the rep
 
 **Recommended extensions:**
 
-| Extension | ID | Purpose |
-|---|---|---|
-| ESLint | `dbaeumer.vscode-eslint` | Shows lint errors inline as you type |
-| Prettier | `esbenp.prettier-vscode` | Formats on save using the project's `.prettierrc` |
+| Extension | ID                       | Purpose                                           |
+| --------- | ------------------------ | ------------------------------------------------- |
+| ESLint    | `dbaeumer.vscode-eslint` | Shows lint errors inline as you type              |
+| Prettier  | `esbenp.prettier-vscode` | Formats on save using the project's `.prettierrc` |
 
 **Recommended `settings.json` (add to your local `.vscode/settings.json`):**
 
@@ -423,16 +610,16 @@ Until `.vscode/settings.json` and `.vscode/extensions.json` are added to the rep
 
 ---
 
-## 9. Git & Team Workflow
+## 10. Git & Team Workflow
 
 ### Branches
 
 The repository has two branches:
 
-| Branch | Purpose |
-|---|---|
-| `main` | Stable, production-ready code |
-| `dev` | Active development — this is where the team works |
+| Branch | Purpose                                           |
+| ------ | ------------------------------------------------- |
+| `main` | Stable, production-ready code                     |
+| `dev`  | Active development — this is where the team works |
 
 The `dev` branch was created from `main` and is tracked against `origin/dev`. **Do not commit directly to `main`.**
 
@@ -479,7 +666,7 @@ chore/     → maintenance tasks  (chore/add-vscode-settings)
 
 ---
 
-## 10. Common Developer Tasks
+## 11. Common Developer Tasks
 
 ### Add a new shared component
 
@@ -495,11 +682,7 @@ src/components/
 ```jsx
 // src/components/Button/Button.jsx
 function Button({ label, onClick }) {
-  return (
-    <button onClick={onClick}>
-      {label}
-    </button>
-  );
+  return <button onClick={onClick}>{label}</button>;
 }
 
 export default Button;
@@ -528,7 +711,7 @@ src/pages/
 import Contact from './pages/Contact/Contact';
 
 // Inside <Routes>:
-<Route path="/contact" element={<Contact />} />
+<Route path="/contact" element={<Contact />} />;
 ```
 
 ### Add a sub-component inside a page
@@ -606,7 +789,7 @@ src/utils/
 
 ---
 
-## 11. Environment Variables
+## 12. Environment Variables
 
 No environment variables are currently defined or used in this project. There are no `.env`, `.env.example`, `.env.local`, or `.env.production` files.
 
@@ -630,35 +813,35 @@ Add a `.env.example` file with placeholder values when real environment variable
 
 ---
 
-## 12. Dependencies
+## 13. Dependencies
 
 ### Runtime dependencies
 
-| Package | Version | Purpose |
-|---|---|---|
-| `react` | ^19.2.8 | Core UI library |
-| `react-dom` | ^19.2.8 | Renders React components into the browser DOM |
-| `react-router` | ^8.3.1 | Client-side routing — `BrowserRouter`, `Routes`, `Route` |
+| Package        | Version | Purpose                                                  |
+| -------------- | ------- | -------------------------------------------------------- |
+| `react`        | ^19.2.8 | Core UI library                                          |
+| `react-dom`    | ^19.2.8 | Renders React components into the browser DOM            |
+| `react-router` | ^8.3.1  | Client-side routing — `BrowserRouter`, `Routes`, `Route` |
 
 ### Dev dependencies
 
-| Package | Version | Purpose |
-|---|---|---|
-| `vite` | ^8.2.2 | Build tool and dev server with HMR |
-| `@vitejs/plugin-react` | ^6.1.0 | Enables React/JSX support in Vite (uses Oxc/Babel) |
-| `eslint` | ^10.9.0 | JavaScript linter |
-| `@eslint/js` | ^10.0.1 | ESLint's recommended JS rule set |
-| `eslint-plugin-react-hooks` | ^7.1.1 | Enforces React Hook rules |
-| `eslint-plugin-react-refresh` | ^0.5.4 | Warns about exports that break Vite HMR |
-| `eslint-config-prettier` | ^10.1.8 | Disables ESLint rules that conflict with Prettier |
-| `prettier` | ^3.9.6 | Code formatter |
-| `globals` | ^17.11.0 | Provides global variable lists (e.g., `browser`) for ESLint |
-| `@types/react` | ^19.2.18 | TypeScript type definitions for React (used by editor tooling even in JS projects) |
-| `@types/react-dom` | ^19.2.4 | TypeScript type definitions for React DOM |
+| Package                       | Version  | Purpose                                                                            |
+| ----------------------------- | -------- | ---------------------------------------------------------------------------------- |
+| `vite`                        | ^8.2.2   | Build tool and dev server with HMR                                                 |
+| `@vitejs/plugin-react`        | ^6.1.0   | Enables React/JSX support in Vite (uses Oxc/Babel)                                 |
+| `eslint`                      | ^10.9.0  | JavaScript linter                                                                  |
+| `@eslint/js`                  | ^10.0.1  | ESLint's recommended JS rule set                                                   |
+| `eslint-plugin-react-hooks`   | ^7.1.1   | Enforces React Hook rules                                                          |
+| `eslint-plugin-react-refresh` | ^0.5.4   | Warns about exports that break Vite HMR                                            |
+| `eslint-config-prettier`      | ^10.1.8  | Disables ESLint rules that conflict with Prettier                                  |
+| `prettier`                    | ^3.9.6   | Code formatter                                                                     |
+| `globals`                     | ^17.11.0 | Provides global variable lists (e.g., `browser`) for ESLint                        |
+| `@types/react`                | ^19.2.18 | TypeScript type definitions for React (used by editor tooling even in JS projects) |
+| `@types/react-dom`            | ^19.2.4  | TypeScript type definitions for React DOM                                          |
 
 ---
 
-## 13. Troubleshooting
+## 14. Troubleshooting
 
 ### Node version is wrong
 
